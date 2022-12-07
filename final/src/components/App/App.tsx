@@ -22,13 +22,14 @@ export const App = () => {
     const updatedCart = state.products.filter(
       (currentProduct: Product) => currentProduct.name !== product.name
     );
+    updatePrice(updatedCart);
 
     dispatch(remove(updatedCart));
   };
 
-  const updatePrice = (product: any) => {
+  const updatePrice = (products: [] = []) => {
     let total = 0;
-    state.products.forEach((product: Product) => (total += product.price));
+    products.forEach((product: { price: number; }) => (total += product.price));
 
     dispatch(update(total));
   };
