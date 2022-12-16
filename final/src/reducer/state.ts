@@ -8,6 +8,8 @@ export type ShopState = {
     removeFromCart: any,
     addToWish: any,
     removeFromWish: any,
+    increaseOrder: any,
+    decreaseOrder: any
 }
 
 export const initialState = {
@@ -18,4 +20,6 @@ export const initialState = {
     removeFromCart: null,
     addToWish: null,
     removeFromWish: null,
+    increaseOrder: null,
+    decreaseOrder: null,
 }

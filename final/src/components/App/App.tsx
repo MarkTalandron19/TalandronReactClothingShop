@@ -8,6 +8,8 @@ import { useReducer } from "react";
 import {
   add,
   addWish,
+  decreaseQuantity,
+  increaseQuantity,
   initialState,
   remove,
   removeWish,
@@ -52,9 +54,42 @@ export const App = () => {
 
   const updatePrice = (products: [] = []) => {
     let total = 0;
-    products.forEach((product: { price: number }) => (total += product.price));
+    products.forEach(
+      (product: { price: number; quantity: number }) =>
+        (total += product.price * product.quantity)
+    );
 
     dispatch(update(total));
+  };
+
+  const increaseOrder = (product: Product) => {
+    const updatedList = state.products.map((currentProduct: Product) => {
+      if (currentProduct.name === product.name) {
+        return {
+          ...currentProduct,
+          quantity: currentProduct.quantity + 1,
+        };
+      }
+      return currentProduct;
+    });
+
+    updatePrice(updatedList);
+    dispatch(increaseQuantity(updatedList));
+  };
+
+  const decreaseOrder = (product: Product) => {
+    const updatedList = state.products.map((currentProduct: Product) => {
+      if (currentProduct.name === product.name) {
+        return {
+          ...currentProduct,
+          quantity: currentProduct.quantity - 1,
+        };
+      }
+      return currentProduct;
+    });
+
+    updatePrice(updatedList);
+    dispatch(decreaseQuantity(updatedList));
   };
   const value = {
     total: state.total,
@@ -64,6 +99,8 @@ export const App = () => {
     removeFromCart,
     addToWish,
     removeFromWish,
+    increaseOrder,
+    decreaseOrder
   };
   return (
     <ShopContext.Provider value={value}>

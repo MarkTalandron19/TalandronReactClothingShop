@@ -11,7 +11,7 @@ import { useState, useEffect, useContext } from "react";
 import { Product } from "../../models";
 import { ShopContext } from "../../context";
 
-export const ProductCard = ({ name, imageUrl, price }: Product) => {
+export const ProductCard = ({ name, imageUrl, price, quantity }: Product) => {
   const { products, wishes, addToCart, removeFromCart, addToWish, removeFromWish } =
     useContext(ShopContext);
   const [isInCart, setIsInCart] = useState(false);
@@ -39,7 +39,7 @@ export const ProductCard = ({ name, imageUrl, price }: Product) => {
   }, [wishes, name]);
 
   const handleClick = () => {
-    const product = { name, imageUrl, price };
+    const product = { name, imageUrl, price, quantity };
     if (isInCart) {
       removeFromCart(product);
       setIsInCart(false);
