@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { ShopContext } from "../../context/shopContext";
 import { Product } from "../../models";
 import { ProductCard } from "../ProductCard";
@@ -18,6 +19,11 @@ export const Cart = () => {
           </>
         ))}
       </ProductsWrapper>
+      {products.length > 0 && <Link to="/checkout">
+        <button>
+          Checkout
+        </button>
+      </Link>}
     </>
   );
 };
