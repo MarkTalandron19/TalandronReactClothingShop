@@ -13,17 +13,25 @@ export const Cart = () => {
       <Title>Your cart total is {total}.00$</Title>
       <ProductsWrapper>
         {products.map((product: Product, index) => (
-          <>
-          <ProductCard {...product} key={index} />
-          <QuantityButton {...product} />
-          </>
+          <Layout {...product} key={index} />
         ))}
       </ProductsWrapper>
-      {products.length > 0 && <Link to="/checkout">
-        <CheckoutButton>
-          <p>Checkout</p>
-        </CheckoutButton>
-      </Link>}
+      {products.length > 0 && (
+        <Link to="/checkout">
+          <CheckoutButton>
+            <p>Checkout</p>
+          </CheckoutButton>
+        </Link>
+      )}
+    </>
+  );
+};
+
+const Layout = (product: Product) => {
+  return (
+    <>
+      <ProductCard {...product} />
+      <QuantityButton {...product} />
     </>
   );
 };
