@@ -4,7 +4,7 @@ import { ShopContext } from "../../context/shopContext";
 import { Product } from "../../models";
 import { ProductCard } from "../ProductCard";
 import { QuantityButton } from "../QuantityButton";
-import { ProductsWrapper, Title } from "./Cart.styled";
+import { CheckoutButton, ProductsWrapper, Title } from "./Cart.styled";
 
 export const Cart = () => {
   const { products, total } = useContext(ShopContext);
@@ -20,9 +20,9 @@ export const Cart = () => {
         ))}
       </ProductsWrapper>
       {products.length > 0 && <Link to="/checkout">
-        <button>
-          Checkout
-        </button>
+        <CheckoutButton>
+          <p>Checkout</p>
+        </CheckoutButton>
       </Link>}
     </>
   );

@@ -10,6 +10,7 @@ import {
 import { useState, useEffect, useContext } from "react";
 import { Product } from "../../models";
 import { ShopContext } from "../../context";
+import { FaRegStar, FaStar } from "react-icons/fa";
 
 export const ProductCard = ({ name, imageUrl, price, quantity }: Product) => {
   const { products, wishes, addToCart, removeFromCart, addToWish, removeFromWish } =
@@ -65,7 +66,7 @@ export const ProductCard = ({ name, imageUrl, price, quantity }: Product) => {
         <p>{isInCart ? "-" : "+"}</p>
       </AddButton>
       <WishButton isInList={isInList} onClick={handleList}>
-        <p>{isInList ? "-" : "+"}</p>
+        <p>{isInList ? <FaStar /> : <FaRegStar />}</p>
       </WishButton>
       <TextContainer>
         <Title>{name}</Title>

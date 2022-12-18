@@ -61,7 +61,7 @@ export const WishButton = styled.div<WishButtonProps>`
   right: 20px;
   width: 20px;
   height: 20px;
-  background: ${(props) => (props.isInList ? '#E55336' : '#60c95d')};
+  background: ${(props) => (props.isInList ? '#6699FF' : '#6699CC')};
   border-radius: 50%;
   padding: 5px;
   cursor: pointer;

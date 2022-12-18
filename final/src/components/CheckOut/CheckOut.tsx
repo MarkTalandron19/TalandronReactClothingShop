@@ -1,35 +1,41 @@
 import { useContext } from "react"
 import { ShopContext } from "../../context"
 import { Product } from "../../models/Product";
+import { Title } from "../Cart";
+import { Cell, CheckOutHeader, CheckOutTable, ItemWrapper } from "./CheckOut.styled";
 
 export const CheckOut = () => {
     const { products, total } = useContext(ShopContext);
 
     return(
         <>
-        <table>
-            <th>
+        <CheckOutTable>
+            <CheckOutHeader>
+                Item
+            </CheckOutHeader>
+            <CheckOutHeader>
                 Name
-            </th>
-            <th>
+            </CheckOutHeader>
+            <CheckOutHeader>
                 Price
-            </th>
-            <th>
+            </CheckOutHeader>
+            <CheckOutHeader>
                 Quantity
-            </th>
-            <th>
+            </CheckOutHeader>
+            <CheckOutHeader>
                 Amount Due
-            </th>
+            </CheckOutHeader>
             {products.map((product: Product, index) => (
                 <tr>
-                    <td>{product.name}</td>
-                    <td>{product.price}</td>
-                    <td>{product.quantity}</td>
-                    <td>{product.price * product.quantity}</td>
+                    <Cell><ItemWrapper background={product.imageUrl}></ItemWrapper></Cell>
+                    <Cell><p>{product.name}</p></Cell>
+                    <Cell><p>{product.price}</p></Cell>
+                    <Cell><p>{product.quantity}</p></Cell>
+                    <Cell><p>{product.price * product.quantity}</p></Cell>
                 </tr>
         ))}
-        </table>
-        <p>Total Due: {total}</p>
+        </CheckOutTable>
+        <Title>Total Due: {total}</Title>
         </>
     )
 }
