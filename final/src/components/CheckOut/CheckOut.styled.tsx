@@ -48,3 +48,32 @@ export const Cell = styled.td`
     margin: 0;
   }
 `;
+
+export const CheckOutLabel = styled.label`
+  font-size: 19px;
+  padding-right: 5px;
+`;
+
+export const CheckOutInput = styled.input`
+  margin-right: 10px;
+`;
+
+export const OrderButton = styled.button`
+  background-color: #99ffff;
+  float: right;
+  justify-content: center;
+  align-items: center;
+  top: 20px;
+  right: 20px;
+  width: 150px;
+  height: 30px;
+  padding: 5px;
+  cursor: pointer;
+
+  p {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    color: black;
+  }
+`;

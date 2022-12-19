@@ -5,8 +5,11 @@ import { Title } from "../Cart";
 import {
   Cell,
   CheckOutHeader,
+  CheckOutInput,
+  CheckOutLabel,
   CheckOutTable,
   ItemWrapper,
+  OrderButton,
 } from "./CheckOut.styled";
 
 export const CheckOut = () => {
@@ -14,6 +17,27 @@ export const CheckOut = () => {
 
   return (
     <>
+      <Title>Basic Information</Title>
+      <div>
+        <CheckOutLabel>First Name</CheckOutLabel>
+        <CheckOutInput></CheckOutInput>
+        <CheckOutLabel>Last Name</CheckOutLabel>
+        <CheckOutInput></CheckOutInput>
+      </div>
+      <div>
+        <CheckOutLabel>Phone Number</CheckOutLabel>
+        <CheckOutInput></CheckOutInput>
+        <CheckOutLabel>Email Address</CheckOutLabel>
+        <CheckOutInput></CheckOutInput>
+      </div>
+      <div>
+        <CheckOutLabel>Full Address</CheckOutLabel>
+        <CheckOutInput></CheckOutInput>
+        <CheckOutLabel>City</CheckOutLabel>
+        <CheckOutInput></CheckOutInput>
+        <CheckOutLabel>Zip Code</CheckOutLabel>
+        <CheckOutInput></CheckOutInput>
+      </div>
       <CheckOutTable>
         <thead>
           <tr>
@@ -21,7 +45,7 @@ export const CheckOut = () => {
             <CheckOutHeader>Name</CheckOutHeader>
             <CheckOutHeader>Price</CheckOutHeader>
             <CheckOutHeader>Quantity</CheckOutHeader>
-            <CheckOutHeader>Amount Due</CheckOutHeader>
+            <CheckOutHeader>Total</CheckOutHeader>
           </tr>
         </thead>
         {products.map((product: Product, index) => (
@@ -46,7 +70,9 @@ export const CheckOut = () => {
           </tbody>
         ))}
       </CheckOutTable>
-      <Title>Total Due: ${total}.00</Title>
+        <Title>
+          Grand Total: ${total}.00 <OrderButton><p>Place Order</p></OrderButton>
+        </Title>
     </>
   );
 };
